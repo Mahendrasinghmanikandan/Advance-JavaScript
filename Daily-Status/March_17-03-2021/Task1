@@ -1,0 +1,5 @@
+a[1]:is number
+a[1]:is string
+a[Name]:is string
+a[1,2]:is object
+a[true]:is boolean
