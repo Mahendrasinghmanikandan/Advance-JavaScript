@@ -1,0 +1,9 @@
+[ 'Banana', 'Orange', 'Apple', 'Mango' ]
+toString :Banana,Orange,Apple,Mango
+Join :Banana*Orange*Apple*Mango
+pop :Mango  Balance :Banana,Orange,Apple
+push :5  Total :Banana,Orange,Apple,Mango,Kiwi
+shift :Banana  Balance :Orange,Apple,Mango
+unshift :5  Total :Kiwi,Banana,Orange,Apple,Mango
+splice :  Total :Banana,msm,Orange,Apple,Mango
+slice :Orange,Apple,Mango  Total :Banana,Orange,Apple,Mango
