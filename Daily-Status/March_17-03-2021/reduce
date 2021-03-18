@@ -1,0 +1,7 @@
+acc :1 current :-1
+acc :1
+acc :0 current :-1
+acc :0
+acc :-1 current :1
+acc :-1
+final acc :0
