@@ -1,0 +1,6 @@
+ABCDEFGHIJKLMNOPQRSTUVWXYZ-> Length :26
+indexOf vs lastIndexOf :ABCA
+indexof(A) :0
+lastIndexOf(A) :3
+indexof(A,1) :3
+lastIndexOf(A,1) :0
