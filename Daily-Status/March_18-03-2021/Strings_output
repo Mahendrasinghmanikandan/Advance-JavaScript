@@ -1,7 +1,13 @@
 string :ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
 length :26
+
 Single quote :It's alright.
+
 Double quote :"Better late than never."
+
 Backslash :x\y
+
 string1 is ABCDEFGHIJKLMNOPQRSTUVWXYZ normal string
+
 [String: 'msm']
