@@ -9,13 +9,6 @@ const foreach=datas.forEach((data) => {
 console.log("Foreach:" + foreach);
 
 
-
-datas.forEach((index,item) => {
-    console.log("datas["+index+"]=" +item );
-});
-
-
-
 //Map
 
 datas.map((data) => {
