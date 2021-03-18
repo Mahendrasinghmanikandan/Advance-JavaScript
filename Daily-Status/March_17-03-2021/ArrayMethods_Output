@@ -1,9 +1,28 @@
 [ 'Banana', 'Orange', 'Apple', 'Mango' ]
+
 toString :Banana,Orange,Apple,Mango
-Join :Banana*Orange*Apple*Mango
+
+Join :Banana:Orange:Apple:Mango
+
 pop :Mango  Balance :Banana,Orange,Apple
-push :5  Total :Banana,Orange,Apple,Mango,Kiwi
+
+push :5  Total :Banana,Orange,Apple,Mango,msm
+
 shift :Banana  Balance :Orange,Apple,Mango
-unshift :5  Total :Kiwi,Banana,Orange,Apple,Mango
+
+unshift :5  Total :msm,Banana,Orange,Apple,Mango
+
 splice :  Total :Banana,msm,Orange,Apple,Mango
+
 slice :Orange,Apple,Mango  Total :Banana,Orange,Apple,Mango
+
+array_1 :Banana1,Orange1,Apple1,Mango1 
+
+ array_2 :Banana2,Orange2,Apple2,Mango2
+ 
+ merge_array :Banana1,Orange1,Apple1,Mango1,Banana2,Orange2,Apple2,Mango2
+ 
+delete 0'th:true  Balance :,Orange,Apple,Mango
+
+Changing Elements :1,Orange,Apple,Mango
+
