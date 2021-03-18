@@ -1,0 +1,5 @@
+[ 'B', 'b', 'a', 'A' ]
+Sort: A,B,a,b
+reverse: A,a,b,B
+Ascending :1,2,7,8
+descending :8,7,2,1
