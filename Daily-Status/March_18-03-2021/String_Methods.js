@@ -6,7 +6,7 @@ console.log(alphabet+"-> Length :"+alphabet.length);
 //indexOf() vs lastIndexOf() vs search()
 
 var str = "ABCA";
-console.log("() vs lastIndexOf() vs search():"+str);
+console.log("indexOf() vs lastIndexOf() vs search():"+str);
 console.log("indexof(A) :" + str.indexOf("A"));
 console.log("lastIndexOf(A) :" + str.lastIndexOf("A"));
 
