@@ -1,6 +1,48 @@
 ABCDEFGHIJKLMNOPQRSTUVWXYZ-> Length :26
-indexOf vs lastIndexOf :ABCA
+
+() vs lastIndexOf() vs search():ABCA
+
 indexof(A) :0
+
 lastIndexOf(A) :3
+
 indexof(A,1) :3
+
 lastIndexOf(A,1) :0
+
+search 2
+
+str2 : ABCDE
+
+slice +: BCDE
+
+slice -: BCDE
+
+slice +: ABCD
+
+slice -: CD
+
+substring : B
+
+substr : BC
+
+replace : SBCDE
+
+toUpperCase : ABCDE
+
+toLowerCase : abcde
+
+concat : ABCDEABCA
+
+trim :MSM
+
+padStart :.... MSM 
+
+padEnd : MSM ....
+
+charAt :M
+
+charCodeAt :77
+
+split : ,M,S,M, 
+
