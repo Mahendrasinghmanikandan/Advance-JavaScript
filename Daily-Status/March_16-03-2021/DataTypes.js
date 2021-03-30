@@ -20,10 +20,7 @@ console.log("trueBoolean="+trueBoolean+"  falseBoolean="+falseBoolean);
 var Undefined;
 console.log("Undefined="+Undefined);
 
-// Null
 
-var Null = '';
-console.log("Null"+Null);
 
 
 //Objects
