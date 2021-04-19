@@ -24,8 +24,8 @@ function Crud() {
             </form>
             <table border='1px' cellPadding='25%'>
                 <tr>
-                    <td>S.No</td>
-                    <td>Names</td>
+                    <th>S.No</th>
+                    <th>Names</th>
                 </tr>
                 {names.map((e) => (
                     <tr key={e.id}>
