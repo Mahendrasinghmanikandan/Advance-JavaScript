@@ -1,62 +1,72 @@
 import { React, useState } from 'react'
-// import Update from './Update'
-function Crud() {
+
+const Crud2 = () => {
     const [datas, setdatas] = useState([
         {
             id: 1,
             name: "nesrin"
         }
-    ]);
-    const [data, setdata] = useState('');
-    const [updates, setupdates] = useState(false);
-    const [id, setid] = useState()
+    ])
+    const [data, setdata] = useState('')
+    const [uid, setuid] = useState()
+    const [ustatus, setustatus] = useState(false)
     const Add = (event) => {
-        event.preventDefault();
-        let newdata = { id: (Math.floor(Math.random() * 1000) + 1), name: data };
-        data === '' ? alert("hey enter something") : setdatas([...datas, newdata])
-        setdata('')
+        event.preventDefault()
+        let id = (Math.floor(Math.random() * 1000) + 1)
+        let newdata = { id: id, name: data }
+        data ? setdatas([...datas, newdata]) : alert('Enter Something')
+        setdata('');
     }
     const Edit = () => {
-        data === '' ? alert("hey enter something") : datas.map(res => res.id === id ? res.name = data : '')
-        //setdatas(datas.filter(res => { return res.id === id ? res.name = data : '' }))
-        setupdates(false)
-        setid()
+        // console.log(uid)
+        let id = uid;
+        datas.map(res => {
+            res.id === id ? res.name = data : res.name = res.name
+        })
+        setustatus(false)
         setdata('')
     }
     return (
         <div>
-            {updates === false ? <form onSubmit={Add}> <div>
-                <input type="text" placeholder="Enter Something" value={data} onChange={(e) => { setdata(e.target.value) }} />
-                <input type="submit" value="Add" />
-            </div></form> : <div>
-                <input type="text" placeholder="Enter New Name" onChange={(e) => { setdata(e.target.value) }} />
-                <input type="submit" value="Update" onClick={Edit} />
-                <input type="button" value="Cancel" onClick={() => { setupdates(false) }} />
-            </div>}
-            {/* <Update onClick={Edit} name={datas.map(res => { return res.id === id ? res.name : '' })} /> */}
-            <table cellPadding="22%">
+            <table cellPadding="22%" border='1.5px'>
                 <tr>
-                    <th>S.no</th>
-                    <th>Names</th>
+                    <td colSpan="4">
+                        {ustatus ? <div>
+                            <input type="text" placeholder="Enter New name" value={data} onChange={(e) => { setdata(e.target.value) }} />
+                            <input type="submit" value="Update" onClick={Edit} />
+                            <input type="Button" value="Cancel" onClick={() => { setustatus(false) }} />
+                        </div> :
+                            <form onSubmit={Add}>
+                                <input type="text" placeholder="Enter Your name" value={data} onChange={(e) => { setdata(e.target.value) }} />
+                                <input type="submit" />
+                            </form>}
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
                     <th>delete</th>
                     <th>update</th>
                 </tr>
-                {datas.map(e => (
-                    <tr key={e.id}>
-                        <td>{e.id}</td>
-                        <td>{e.name}</td>
+                {datas.map((value, sn) => (
+                    <tr key={value.id}>
+                        <td>{sn + 1}</td>
+                        <td>{value.name}</td>
                         <td style={{ color: "red" }} onClick={() => {
-                            setdatas(datas.filter((res) => { return res.id !== e.id }))
-                        }}>Del</td>
+                            setdatas(datas.filter(res => res.id !== value.id))
+                        }}>delete</td>
                         <td style={{ color: "green" }} onClick={() => {
-                            setupdates(true)
-                            setid(e.id)
-                        }} >Update</td>
+                            setustatus(true)
+                            setuid(value.id)
+                        }}>Update</td>
                     </tr>
                 ))}
             </table>
-        </div >
+        </div>
     )
 }
 
-export default Crud
+export default Crud2
+
+
