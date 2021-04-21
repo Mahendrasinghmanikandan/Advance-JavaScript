@@ -28,13 +28,16 @@ const Crud2 = () => {
     }
     return (
         <div>
-            <table cellPadding="22%" border='1.5px'>
+            <table cellPadding="20%" border='1.5px'>
                 <tr>
                     <td colSpan="4">
                         {ustatus ? <div>
                             <input type="text" placeholder="Enter New name" value={data} onChange={(e) => { setdata(e.target.value) }} />
                             <input type="submit" value="Update" onClick={Edit} />
-                            <input type="Button" value="Cancel" onClick={() => { setustatus(false) }} />
+                            <input type="Button" value="Cancel" onClick={() => {
+                                setustatus(false)
+                                setdata('')
+                            }} />
                         </div> :
                             <form onSubmit={Add}>
                                 <input type="text" placeholder="Enter Your name" value={data} onChange={(e) => { setdata(e.target.value) }} />
