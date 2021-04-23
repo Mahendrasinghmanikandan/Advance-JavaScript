@@ -64,10 +64,10 @@ const Crud1 = () => {
                     <tr>
                         <td>{sn + 1}</td>
                         <td>{value.name}</td>
-                        <td style={{ color: "green" }} onClick={() => {
+                        <td style={{ color: "green", cursor: 'pointer' }} onClick={() => {
                             Edit(value.id, value.name)
                         }}>Edit</td>
-                        <td style={{ color: "red" }} onClick={() => deleteDatas(value.id)}>delete</td>
+                        <td style={{ color: "red", cursor: 'pointer' }} onClick={() => deleteDatas(value.id)}>delete</td>
                     </tr>
                 ))}
 
