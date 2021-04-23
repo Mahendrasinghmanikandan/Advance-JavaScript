@@ -3,7 +3,6 @@ const Crud1 = () => {
     const [datas, setdatas] = useState([])
     const [data, setdata] = useState('')
     const [uid, setuid] = useState()
-    const [uname, setuname] = useState('')
     const [ustatus, setustatus] = useState(false)
     const Add = (event) => {
         event.preventDefault()
@@ -20,14 +19,14 @@ const Crud1 = () => {
         // console.log(id)
         setustatus(true)
         setuid(id)
-        setuname(name)
+        setdata(name)
     }
     const Update = (event) => {
         event.preventDefault()
         // console.log(uid)
         let id = uid;
         datas.map(res => {
-            uname ? res.id === id ? res.name = uname : res.name = res.name : res.name = res.name
+            data ? res.id === id ? res.name = data : res.name = res.name : res.name = res.name
         })
         setustatus(false)
         setdata('')
@@ -37,22 +36,14 @@ const Crud1 = () => {
             <table cellPadding="20%" border='1.5px'>
                 <tr>
                     <td colSpan="4">
-                        {ustatus ? <form onSubmit={Update}>
-                            <input type="text" placeholder="Enter New name" value={uname} onChange={(e) => { setuname(e.target.value) }} />
+                        <form onSubmit={ustatus ? Update : Add} >
+                            <input type="text" placeholder="Enter New name" value={data} onChange={(e) => { setdata(e.target.value) }} />
                             <input type="submit" />
                             <input type="Button" value="Cancel" onClick={() => {
                                 setustatus(false)
-                                setuname('')
+                                setdata('')
                             }} />
-                        </form> :
-                            <form onSubmit={Add}>
-                                <input type="text" placeholder="Enter Your name" value={data} onChange={(e) => { setdata(e.target.value) }} />
-                                <input type="submit" />
-                                <input type="Button" value="Cancel" onClick={() => {
-                                    setdata('')
-                                }} />
-                            </form>}
-
+                        </form>
                     </td>
                 </tr>
                 <tr>
