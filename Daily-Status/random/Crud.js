@@ -26,7 +26,7 @@ const Crud1 = () => {
         // console.log(uid)
         let id = uid;
         datas.map(res => {
-            data ? res.id === id ? res.name = data : res.name = res.name : res.name = res.name
+            data ? res.id === id ? res.name = data : res.name = res.name : alert('Enter Something')
         })
         setustatus(false)
         setdata('')
