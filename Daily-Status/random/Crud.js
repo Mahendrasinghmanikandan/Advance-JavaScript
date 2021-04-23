@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-const Parent = () => {
+const Crud1 = () => {
     const [datas, setdatas] = useState([])
     const [data, setdata] = useState('')
     const [uid, setuid] = useState()
@@ -42,14 +42,13 @@ const Parent = () => {
                             <input type="submit" />
                             <input type="Button" value="Cancel" onClick={() => {
                                 setustatus(false)
-                                setdata('')
+                                setuname('')
                             }} />
                         </form> :
                             <form onSubmit={Add}>
                                 <input type="text" placeholder="Enter Your name" value={data} onChange={(e) => { setdata(e.target.value) }} />
                                 <input type="submit" />
                                 <input type="Button" value="Cancel" onClick={() => {
-                                    setustatus(false)
                                     setdata('')
                                 }} />
                             </form>}
@@ -77,6 +76,6 @@ const Parent = () => {
     )
 }
 
-export default Parent
+export default Crud1
 
 
