@@ -1,14 +1,9 @@
 import { React, useState } from 'react'
-
-const Crud2 = () => {
-    const [datas, setdatas] = useState([
-        {
-            id: 1,
-            name: "nesrin"
-        }
-    ])
+const Parent = () => {
+    const [datas, setdatas] = useState([])
     const [data, setdata] = useState('')
     const [uid, setuid] = useState()
+    const [uname, setuname] = useState('')
     const [ustatus, setustatus] = useState(false)
     const Add = (event) => {
         event.preventDefault()
@@ -17,11 +12,22 @@ const Crud2 = () => {
         data ? setdatas([...datas, newdata]) : alert('Enter Something')
         setdata('');
     }
-    const Edit = () => {
+    const deleteDatas = (id) => {
+        console.log(id)
+        setdatas(datas.filter(res => res.id !== id))
+    }
+    const Edit = (id, name) => {
+        // console.log(id)
+        setustatus(true)
+        setuid(id)
+        setuname(name)
+    }
+    const Update = (event) => {
+        event.preventDefault()
         // console.log(uid)
         let id = uid;
         datas.map(res => {
-            res.id === id ? res.name = data : res.name = res.name
+            uname ? res.id === id ? res.name = uname : res.name = res.name : res.name = res.name
         })
         setustatus(false)
         setdata('')
@@ -31,17 +37,21 @@ const Crud2 = () => {
             <table cellPadding="20%" border='1.5px'>
                 <tr>
                     <td colSpan="4">
-                        {ustatus ? <div>
-                            <input type="text" placeholder="Enter New name" value={data} onChange={(e) => { setdata(e.target.value) }} />
-                            <input type="submit" value="Update" onClick={Edit} />
+                        {ustatus ? <form onSubmit={Update}>
+                            <input type="text" placeholder="Enter New name" value={uname} onChange={(e) => { setuname(e.target.value) }} />
+                            <input type="submit" />
                             <input type="Button" value="Cancel" onClick={() => {
                                 setustatus(false)
                                 setdata('')
                             }} />
-                        </div> :
+                        </form> :
                             <form onSubmit={Add}>
                                 <input type="text" placeholder="Enter Your name" value={data} onChange={(e) => { setdata(e.target.value) }} />
                                 <input type="submit" />
+                                <input type="Button" value="Cancel" onClick={() => {
+                                    setustatus(false)
+                                    setdata('')
+                                }} />
                             </form>}
 
                     </td>
@@ -49,27 +59,24 @@ const Crud2 = () => {
                 <tr>
                     <th>S.No</th>
                     <th>Name</th>
-                    <th>delete</th>
-                    <th>update</th>
+                    <th colSpan='2'>Action</th>
                 </tr>
                 {datas.map((value, sn) => (
-                    <tr key={value.id}>
+                    <tr>
                         <td>{sn + 1}</td>
                         <td>{value.name}</td>
-                        <td style={{ color: "red" }} onClick={() => {
-                            setdatas(datas.filter(res => res.id !== value.id))
-                        }}>delete</td>
                         <td style={{ color: "green" }} onClick={() => {
-                            setustatus(true)
-                            setuid(value.id)
-                        }}>Update</td>
+                            Edit(value.id, value.name)
+                        }}>Edit</td>
+                        <td style={{ color: "red" }} onClick={() => deleteDatas(value.id)}>delete</td>
                     </tr>
                 ))}
+
             </table>
-        </div>
+        </div >
     )
 }
 
-export default Crud2
+export default Parent
 
 
