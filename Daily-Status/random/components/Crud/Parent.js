@@ -12,6 +12,7 @@ const Parent = () => {
     ])
     const [data, setdata] = useState('')
     const [uid, setuid] = useState()
+    const [uname, setuname] = useState('')
     const [ustatus, setustatus] = useState(false)
     const Add = (event) => {
         event.preventDefault()
@@ -24,16 +25,17 @@ const Parent = () => {
         console.log(id)
         setdatas(datas.filter(res => res.id !== id))
     }
-    const Edit = (id) => {
+    const Edit = (id, name) => {
         // console.log(id)
         setustatus(true)
         setuid(id)
+        setuname(name)
     }
     const Update = () => {
         // console.log(uid)
         let id = uid;
         datas.map(res => {
-            data ? res.id === id ? res.name = data : res.name = res.name : res.name = res.name
+            uname ? res.id === id ? res.name = uname : res.name = res.name : res.name = res.name
         })
         setustatus(false)
         setdata('')
@@ -44,7 +46,7 @@ const Parent = () => {
                 <tr>
                     <td colSpan="4">
                         {ustatus ? <div>
-                            <input type="text" placeholder="Enter New name" value={data} onChange={(e) => { setdata(e.target.value) }} />
+                            <input type="text" placeholder="Enter New name" value={uname} onChange={(e) => { setuname(e.target.value) }} />
                             <input type="submit" value="Update" onClick={Update} />
                             <input type="Button" value="Cancel" onClick={() => {
                                 setustatus(false)
