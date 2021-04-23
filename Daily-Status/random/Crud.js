@@ -38,7 +38,7 @@ const Crud1 = () => {
                     <td colSpan="4">
                         <form onSubmit={ustatus ? Update : Add} >
                             <input type="text" placeholder="Enter New name" value={data} onChange={(e) => { setdata(e.target.value) }} />
-                            <input type="submit" />
+                            <input type="submit" value={ustatus ? 'Update' : 'Add'} />
                             <input type="Button" value="Cancel" onClick={() => {
                                 setustatus(false)
                                 setdata('')
