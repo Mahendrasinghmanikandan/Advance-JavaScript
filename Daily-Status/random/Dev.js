@@ -17,7 +17,7 @@ const Dev = () => {
     // Drawer
     const [isEditDrawerVisible, setisEditDrawerVisible] = useState(false);
     const [isAddDrawerVisible, setisAddDrawerVisible] = useState(false);
-    // get data's from api
+    // get data from api
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts').then(res => {
             setdatas(res.data)
@@ -84,7 +84,7 @@ const Dev = () => {
     const handleAdd = () => {
         let id = (Math.floor(Math.random() * 1000) + 1)
         let newdata = { userId: 1, id: id, title: forms.title, body: forms.body }
-        console.log(forms.title)
+        // console.log(forms.title)
         if (forms.title !== '' && forms.body !== '') {
             setdatas([...datas, newdata])
             setforms('')
