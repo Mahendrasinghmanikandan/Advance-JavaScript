@@ -7,15 +7,17 @@ const Dev = () => {
     // Api datas 
     const [datas, setdatas] = useState([])
     // for add & update
-    const [uid, setuid] = useState()
-    const [title, settitle] = useState()
-    const [body, setbody] = useState()
+    const [forms, setforms] = useState({
+        uid: '',
+        title: '',
+        body: ''
+    })
     // for search
     const [search, setsearch] = useState('')
     // Drawer
     const [isEditDrawerVisible, setisEditDrawerVisible] = useState(false);
     const [isAddDrawerVisible, setisAddDrawerVisible] = useState(false);
-    // get data from api
+    // get data's from api
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts').then(res => {
             setdatas(res.data)
@@ -56,10 +58,7 @@ const Dev = () => {
             render: (record) => (
                 <Space size="middle">
                     <p style={{ cursor: 'pointer', color: 'green' }} onClick={() => {
-                        setuid(record.id)
-                        setbody(record.body)
-                        settitle(record.title)
-
+                        setforms({ uid: record.id, body: record.body, title: record.title })
                     }}><EditOutlined onClick={() => { setisEditDrawerVisible(true) }} /></p>
                     <p style={{ cursor: 'pointer', color: 'red' }} onClick={() => {
                         setdatas(datas.filter(res => res.id !== record.id))
@@ -71,13 +70,11 @@ const Dev = () => {
     ];
     // Update 
     const handleUpdate = () => {
-        if (title !== '' && body !== '') {
+        if (forms.title !== '' && forms.body !== '') {
             datas.map(res => (
-                res.id === uid ? (res.title = title, res.body = body) : (res.title = res.title, res.body = res.body)
+                res.id === forms.uid ? (res.title = forms.title, res.body = forms.body) : ('')
             ))
-            settitle('')
-            setbody('')
-            setuid('')
+            setforms('')
             setisEditDrawerVisible(false)
         } else {
             alert('hey Fill the details')
@@ -86,32 +83,32 @@ const Dev = () => {
     // Add
     const handleAdd = () => {
         let id = (Math.floor(Math.random() * 1000) + 1)
-        let newdata = { userId: 1, id: id, title: title, body: body }
-        if (title !== '' && body !== '') {
+        let newdata = { userId: 1, id: id, title: forms.title, body: forms.body }
+        console.log(forms.title)
+        if (forms.title !== '' && forms.body !== '') {
             setdatas([...datas, newdata])
-            settitle('')
-            setbody('')
+            setforms('')
             setisAddDrawerVisible(false)
         } else {
             alert('hey Fill the details')
         }
+    }
+    // input fields onChange 
+    const handlechange = (e) => {
+        setforms({ ...forms, [e.target.name]: e.target.value })
     }
     return (
         <div>
             {/* Edit Drawer Start*/}
             <Drawer title="Update Datas" width={500} visible={isEditDrawerVisible} onClose={() => {
                 setisEditDrawerVisible(false)
-                settitle('')
-                setuid('')
-                setbody('')
+                setforms('')
             }}
                 footer={
                     <div>
                         <Button style={{ marginRight: 8 }} onClick={() => {
                             setisEditDrawerVisible(false)
-                            settitle('')
-                            setuid('')
-                            setbody('')
+                            setforms('')
                         }}>
                             Cancel
                        </Button>
@@ -122,7 +119,7 @@ const Dev = () => {
                     <Row gutter={24}>
                         <Col span={24}>
                             <Form.Item label="Title">
-                                <Input value={title} onChange={(e) => { settitle(e.target.value) }} size='large' />
+                                <Input value={forms.title} name="title" onChange={handlechange} size='large' />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -130,7 +127,7 @@ const Dev = () => {
                         <Col span={24}>
                             <Form.Item label="Body">
                                 <Input
-                                    value={body} onChange={(e) => { setbody(e.target.value) }} size='large' />
+                                    value={forms.body} name="body" onChange={handlechange} size='large' />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -139,20 +136,18 @@ const Dev = () => {
             </Drawer>
             {/* Edit Drawer End */}
             {/* Add Drawer Start*/}
-            <Drawer title="Add Datas" width={720} visible={isAddDrawerVisible} onOk={() => {
+            <Drawer title="Add Datas" width={500} visible={isAddDrawerVisible} onOk={() => {
                 setisAddDrawerVisible(false)
                 handleAdd()
             }} onClose={() => {
                 setisAddDrawerVisible(false)
-                settitle('')
-                setbody('')
+                setforms('')
             }}
                 footer={
                     <div>
                         <Button style={{ marginRight: 8 }} onClick={() => {
                             setisAddDrawerVisible(false)
-                            settitle('')
-                            setbody('')
+                            setforms('')
                         }}>
                             Cancel
                        </Button>
@@ -163,7 +158,7 @@ const Dev = () => {
                     <Row gutter={24}>
                         <Col span={24}>
                             <Form.Item label="Title">
-                                <Input value={title} onChange={(e) => { settitle(e.target.value) }} size='large' />
+                                <Input value={forms.title} name='title' onChange={handlechange} size='large' />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -171,7 +166,7 @@ const Dev = () => {
                         <Col span={24}>
                             <Form.Item label="Body">
                                 <Input
-                                    value={body} onChange={(e) => { setbody(e.target.value) }} size='large' />
+                                    value={forms.body} name='body' onChange={handlechange} size='large' />
                             </Form.Item>
 
                         </Col>
