@@ -107,7 +107,6 @@ const Dev = () => {
                         remember: true,
                     }}
                     onFinish={status === 'add' ? handleadd : handleupdate}
-                // onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
                         label="uid"
